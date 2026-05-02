@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { BookOpen, Mail, Phone, MapPin, Github, Twitter, Linkedin } from 'lucide-react'
+import { BookOpen, Mail, Phone, MapPin } from 'lucide-react'
 
 const footerLinks = {
   Formations: ['Développement Web', 'Design UI/UX', 'Data Science', 'DevOps', 'Mobile'],
@@ -37,13 +37,9 @@ export default function Footer() {
             </div>
             {/* Social */}
             <div className="flex gap-3">
-              {[Github, Twitter, Linkedin].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 bg-slate-800 hover:bg-primary-600 rounded-xl flex items-center justify-center transition-colors"
-                >
-                  <Icon size={16} />
+              {['G', 'T', 'Li'].map((name, i) => (
+                <a key={i} href="#" className="w-9 h-9 bg-slate-800 hover:bg-primary-600 rounded-xl flex items-center justify-center transition-colors text-xs font-bold">
+                  {name}
                 </a>
               ))}
             </div>

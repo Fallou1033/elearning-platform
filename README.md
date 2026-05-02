@@ -1,73 +1,124 @@
-# React + TypeScript + Vite
+# 🎓 LearnHub — Plateforme E-learning
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Projet Frontend — Module Dev Web Frontend  
+> Année scolaire 2025-2026 | Prof : M. SOUMARE  
+> Stack : **React + TypeScript + Tailwind CSS**
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Lancer le projet en local
 
-## React Compiler
+```bash
+# 1. Cloner le repo
+git clone https://github.com/TON-USERNAME/elearning-platform.git
+cd elearning-platform
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# 2. Installer les dépendances
+npm install
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 3. Lancer le serveur de développement
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🌿 GitFlow — Branches à respecter
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+main
+ └── develop
+      ├── feature/landing      → Membre 2
+      ├── feature/auth         → Membre 3
+      ├── feature/dashboard    → Membre 4
+      └── feature/routing      → Chef de projet (toi)
+```
+
+### Commandes quotidiennes
+
+```bash
+# Avant de commencer → récupérer les dernières MAJ
+git pull origin develop
+
+# Sauvegarder son travail
+git add .
+git commit -m "feat: description de ce que tu as fait"
+git push origin feature/MA-BRANCHE
+
+# Quand ta partie est terminée → ouvrir une Pull Request sur GitHub
+# feature/MA-BRANCHE → develop
+```
+
+### Convention de commits
+
+| Préfixe | Usage |
+|---------|-------|
+| `feat:` | Nouvelle fonctionnalité |
+| `fix:` | Correction de bug |
+| `chore:` | Config, setup |
+| `style:` | Mise en forme, CSS |
+| `refactor:` | Restructuration |
+
+---
+
+## 📁 Structure du projet
+
+```
+src/
+├── components/
+│   ├── common/          # Composants partagés (Button, Badge, etc.)
+│   ├── landing/         # Composants de la Landing Page
+│   ├── auth/            # Composants des pages Auth
+│   └── dashboard/       # Sidebar, Navbar, CourseCard, etc.
+├── data/
+│   ├── courses.ts       # Données mockées des cours
+│   └── testimonials.ts  # Données mockées des témoignages
+├── layouts/
+│   ├── AuthLayout.tsx   # Layout pour Login/Register/ForgotPassword
+│   └── DashboardLayout.tsx # Layout pour toutes les pages Dashboard
+├── pages/
+│   ├── LandingPage.tsx       # 🎨 Membre 2
+│   ├── LoginPage.tsx         # 🔐 Membre 3
+│   ├── RegisterPage.tsx      # 🔐 Membre 3
+│   ├── ForgotPasswordPage.tsx # 🔐 Membre 3
+│   ├── DashboardPage.tsx     # 📊 Membre 4
+│   ├── CoursesPage.tsx       # 📚 Membre 4
+│   ├── ProfilePage.tsx       # 👤 Membre 4
+│   └── NotFoundPage.tsx      # ✅ Fait
+├── router/
+│   └── AppRouter.tsx    # ✅ Routing complet — Chef de projet
+├── types/
+│   └── index.ts         # ✅ Types TypeScript partagés
+├── hooks/               # Custom hooks (à créer si besoin)
+├── App.tsx              # ✅ Point d'entrée
+├── main.tsx             # ✅ Rendu React
+└── index.css            # ✅ Tailwind + classes utilitaires
+```
+
+---
+
+## 👥 Répartition de l'équipe
+
+| Membre | Branche | Responsabilité |
+|--------|---------|----------------|
+| **Chef de projet** | `feature/routing` | Setup, routing, composants partagés, review PR, déploiement |
+| **Membre 2** | `feature/landing` | Landing Page complète (Hero, Formations, Avantages, Témoignages, Footer) |
+| **Membre 3** | `feature/auth` | Pages Auth (Login, Inscription, Réinitialisation) — adapter modèle Figma |
+| **Membre 4** | `feature/dashboard` | Dashboard complet (Stats, Cours, Progression, Profil) — adapter modèle Figma |
+
+---
+
+## 🎨 Figma — Modèles à adapter
+
+- **Auth** : https://www.figma.com/design/bFrrspJiYGBb7ckJfpWzKd/Model-LOGIN-projet-devfront
+- **Dashboard** : https://www.figma.com/design/7he9xmPmJGgOCZJrPKTRD5/Modele-Dashboard-projet-front
+
+---
+
+## 🌐 Déploiement
+
+```bash
+npm run build
+# Déployer le dossier /dist sur Vercel, Netlify ou GitHub Pages
+```
+
+**Deadline : 12 mai 2025**

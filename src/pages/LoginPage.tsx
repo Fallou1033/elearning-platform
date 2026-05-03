@@ -1,78 +1,94 @@
-// ============================================================
-// 🔐 LOGIN PAGE — À compléter par : Membre 3
-// Branch : feature/auth
-// Adapter le modèle Figma fourni par le prof :
-// https://www.figma.com/design/bFrrspJiYGBb7ckJfpWzKd/...
-// Champs : Email + Mot de passe + Se souvenir de moi
-// Liens : "Mot de passe oublié" → /forgot-password
-//         "S'inscrire" → /register
-// ============================================================
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { BookOpen, Mail, Lock, LogIn } from 'lucide-react';
 
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-
-export default function LoginPage() {
-  const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+const Login: React.FC = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // TODO : remplacer par vraie logique Auth
-    localStorage.setItem('isLoggedIn', 'true')
-    navigate('/dashboard')
-  }
+    e.preventDefault();
+    console.log("Tentative de connexion :", { email, password });
+  };
 
   return (
-    <div className="w-full max-w-md">
-      <div className="card p-8">
-        <h2 className="font-display text-2xl font-bold text-slate-900 mb-2">Connexion</h2>
-        <p className="text-slate-500 mb-6">🚧 Design à adapter depuis le modèle Figma</p>
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 font-sans p-6">
+      <div className="w-full max-w-md bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100">
+        
+        {/* Logo et Titre */}
+        <div className="flex flex-col items-center mb-10">
+          <div className="bg-primary-600 text-white p-3 rounded-2xl mb-4 shadow-lg shadow-primary-200">
+            <BookOpen size={28} />
+          </div>
+          <h2 className="font-display text-2xl font-bold text-slate-900">Connexion LearnHub</h2>
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="mon@email.com"
-              className="input-field"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Mot de passe</label>
-            <input
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              placeholder="••••••••"
-              className="input-field"
-              required
-            />
-          </div>
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center gap-2 text-slate-600 cursor-pointer">
-              <input type="checkbox" className="rounded" />
-              Se souvenir de moi
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Email */}
+          <div className="space-y-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">
+              Adresse Email
             </label>
-            <Link to="/forgot-password" className="text-primary-600 hover:underline">
-              Mot de passe oublié ?
-            </Link>
+            <div className="relative">
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+              <input 
+                type="email" 
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-primary-500 outline-none transition-all"
+                placeholder="nom@exemple.com"
+              />
+            </div>
           </div>
-          <button type="submit" className="btn-primary w-full mt-2">
+
+          {/* Mot de passe */}
+          <div className="space-y-2">
+            <div className="flex justify-between items-center px-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
+                Mot de passe
+              </label>
+              {/* CORRECTION ICI : L'attribut 'name' a été supprimé pour corriger l'erreur TypeScript */}
+              <Link 
+                to="/auth/reset-password" 
+                className="text-xs font-bold text-primary-600 hover:text-primary-700 transition-colors"
+              >
+                Oublié ?
+              </Link>
+            </div>
+            <div className="relative">
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+              <input 
+                type="password" 
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-primary-500 outline-none transition-all"
+                placeholder="••••••••"
+              />
+            </div>
+          </div>
+
+          <button 
+            type="submit"
+            className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary-200 flex items-center justify-center gap-2 group"
+          >
             Se connecter
+            <LogIn size={18} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </form>
 
-        <p className="text-center text-sm text-slate-500 mt-6">
-          Pas encore de compte ?{' '}
-          <Link to="/register" className="text-primary-600 font-semibold hover:underline">
-            S'inscrire
-          </Link>
-        </p>
+        <div className="mt-10 pt-6 border-t border-slate-100 text-center">
+          <p className="text-slate-500 text-sm">
+            Pas encore de compte ?{' '}
+            <Link to="/register" className="font-bold text-primary-600 hover:text-primary-700">
+              Créer un compte
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Login;

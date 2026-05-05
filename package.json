@@ -1,4 +1,9 @@
 {
+<<<<<<< HEAD
+  "dependencies": {
+    "@types/react": "^19.2.14",
+    "react": "^19.2.5"
+=======
   "name": "elearning-platform",
   "private": true,
   "version": "0.0.0",
@@ -31,5 +36,6 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.10"
+>>>>>>> 65e1d7287406a1d52e3beca28f51e11bd27b3fb3
   }
 }

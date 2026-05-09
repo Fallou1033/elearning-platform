@@ -94,12 +94,10 @@ export default function Formations() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <Link to="/register" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 text-base">
-            Voir toutes les formations
-            <ArrowRight size={18} />
-          </Link>
-        </div>
+        <Link to="/dashboard/courses" className="btn-primary inline-flex items-center gap-2 px-8 py-3.5 text-base">
+  Voir toutes les formations
+  <ArrowRight size={18} />
+</Link>
       </div>
     </section>
   )

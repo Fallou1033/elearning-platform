@@ -43,31 +43,33 @@ const Login: React.FC = () => {
           </div>
 
           {/* Mot de passe */}
-          <div className="space-y-2">
-            <div className="flex justify-between items-center px-1">
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
-                Mot de passe
-              </label>
-              {/* CORRECTION ICI : L'attribut 'name' a été supprimé pour corriger l'erreur TypeScript */}
-              <Link 
-                to="/auth/reset-password" 
-                className="text-xs font-bold text-primary-600 hover:text-primary-700 transition-colors"
-              >
-                Oublié ?
-              </Link>
-            </div>
-            <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-              <input 
-                type="password" 
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-primary-500 outline-none transition-all"
-                placeholder="••••••••"
-              />
-            </div>
-          </div>
+<div className="space-y-2">
+  <div className="flex justify-between items-center px-1">
+    <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
+      Mot de passe
+    </label>
+    
+    {/* C'EST ICI QU'ON MET LE LIEN */}
+    <Link 
+      to="/forgot-password" 
+      className="text-xs font-bold text-primary-600 hover:text-primary-700 transition-colors"
+    >
+      Oublié ?
+    </Link>
+  </div>
+  
+  <div className="relative">
+    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+    <input 
+      type="password" 
+      required
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:ring-2 focus:ring-primary-500 outline-none transition-all"
+      placeholder="••••••••"
+    />
+  </div>
+</div>
 
           <button 
             type="submit"

@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 // Layouts
 import AuthLayout from '../layouts/AuthLayout'
 import DashboardLayout from '../layouts/DashboardLayout'
-
 // Pages
 import LandingPage from '../pages/LandingPage'
 import LoginPage from '../pages/LoginPage'
@@ -11,6 +10,7 @@ import RegisterPage from '../pages/RegisterPage'
 import ForgotPasswordPage from '../pages/ForgotPasswordPage'
 import DashboardPage from '../pages/DashboardPage'
 import CoursesPage from '../pages/CoursesPage'
+import CourseDetailPage from '../pages/Coursedetailpage'
 import ProfilePage from '../pages/ProfilePage'
 import NotFoundPage from '../pages/NotFoundPage'
 
@@ -28,7 +28,8 @@ export default function AppRouter() {
     <Routes>
       {/* Public - Landing */}
       <Route path="/" element={<LandingPage />} />
-
+    
+<Route path="/cours/:id" element={<CourseDetailPage />} />
       {/* Public - Auth pages */}
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<LoginPage />} />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import ProgressBar from './ProgressBar';
-
+import ProgressBar from '../assets/ProgressBar';
+import DashboardNavbar from '../components/dashboards/DashboardNavbar';
+import Sidebar from '../components/dashboards/Sidebar';
 // Interface pour le typage TypeScript
 interface Course {
   id: number;
@@ -23,6 +24,8 @@ const Dashboard : React.FC = () => {
       const filteredCourses = filter === "Tous" 
     ? courses 
     : courses.filter((c) => c.category === filter);
+
+    
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-100 font-sans">
@@ -56,6 +59,24 @@ const Dashboard : React.FC = () => {
                   </div>
                   <ProgressBar progress={course.progress} />
                 </div>
+                return (
+                return (
+                <div className="flex h-screen bg-gray-100">
+                  {/* On utilise enfin la Sidebar */}
+                  <Sidebar isOpen={true} onClose={() => {}} /> 
+
+                  <div className="flex-1 flex flex-col overflow-hidden">
+                    {/* On utilise enfin la Navbar */}
+                    <DashboardNavbar onMenuClick={() => {}} />
+
+                    <main className="flex-1 overflow-y-auto p-6">
+                      <h1 className="text-2xl font-bold mb-4">Mon Tableau de Bord</h1>
+                      {/* Ta ProgressBar et ton contenu ici */}
+                      <ProgressBar progress={45} />
+                    </main>
+                  </div>
+                </div>
+              );
                 
                 <button className="w-full mt-4 bg-slate-900 text-white py-2 rounded-lg hover:bg-slate-700 transition">
                   Continuer

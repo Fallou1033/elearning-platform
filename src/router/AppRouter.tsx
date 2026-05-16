@@ -12,7 +12,7 @@ import CoursesPage from '../pages/CoursesPage'
 import CourseDetailPage from '../pages/Coursedetailpage'
 import ProfilePage from '../pages/ProfilePage'
 import NotFoundPage from '../pages/NotFoundPage'
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '../pages/DashboardPage';
 
 // Simple auth guard (à remplacer par un vrai contexte Auth)
 const isAuthenticated = () => 
